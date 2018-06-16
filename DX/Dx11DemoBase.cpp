@@ -30,10 +30,10 @@ bool Dx11DemoBase::Initialize(HINSTANCE hInstance, HWND hwnd)
 
 	D3D_DRIVER_TYPE driverTypes[] =
 	{
-		D3D_DRIVER_TYPE_HARDWARE,
+		D3D_DRIVER_TYPE_HARDWARE, 
 		D3D_DRIVER_TYPE_WARP,
-		D3D_DRIVER_TYPE_REFERENCE,
-		D3D_DRIVER_TYPE_SOFTWARE
+		D3D_DRIVER_TYPE_REFERENCE
+		//D3D_DRIVER_TYPE_SOFTWARE
 	};
 
 	unsigned int totalDriverTypes = ARRAYSIZE(driverTypes);
@@ -72,7 +72,8 @@ bool Dx11DemoBase::Initialize(HINSTANCE hInstance, HWND hwnd)
 
 	for (driver = 0; driver < totalDriverTypes; ++driver)
 	{
-		result = D3D11CreateDeviceAndSwapChain(0,
+		result = D3D11CreateDeviceAndSwapChain(
+			nullptr,
 			driverTypes[driver],
 			0,
 			creationFlags,
@@ -99,6 +100,7 @@ bool Dx11DemoBase::Initialize(HINSTANCE hInstance, HWND hwnd)
 	}
 
 	ID3D11Texture2D* backBufferTexture;
+	// param1,2D贴图视图；param2,渲染目标描述；param3,渲染目标视图对象的地址
 	result = swapChain_->GetBuffer(0, __uuidof(ID3D11Texture2D),(LPVOID*)&backBufferTexture);
 
 	if (FAILED(result))

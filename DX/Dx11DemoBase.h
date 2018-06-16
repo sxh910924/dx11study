@@ -1,9 +1,8 @@
 #pragma once
 
-#include<d3d11.h>
-//#include<d3dx11.h>
-//#include<DxErr.h>
-
+#include <d3d11.h>
+//#include <DxErr.h>
+//#inclu de<d3dx11.h>
 
 class Dx11DemoBase
 {
