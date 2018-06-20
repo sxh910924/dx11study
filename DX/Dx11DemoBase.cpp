@@ -1,5 +1,6 @@
 
 #include "Dx11DemoBase.h"
+#include <D3Dcompiler.h>
 
 Dx11DemoBase::Dx11DemoBase()
 	: driverType_(D3D_DRIVER_TYPE_NULL)
@@ -30,7 +31,7 @@ bool Dx11DemoBase::Initialize(HINSTANCE hInstance, HWND hwnd)
 
 	D3D_DRIVER_TYPE driverTypes[] =
 	{
-		D3D_DRIVER_TYPE_HARDWARE, 
+		D3D_DRIVER_TYPE_HARDWARE,
 		D3D_DRIVER_TYPE_WARP,
 		D3D_DRIVER_TYPE_REFERENCE
 		//D3D_DRIVER_TYPE_SOFTWARE
@@ -95,13 +96,13 @@ bool Dx11DemoBase::Initialize(HINSTANCE hInstance, HWND hwnd)
 
 	if (FAILED(result))
 	{
-		// failed to create the direct3d device!
+		//DXTRACE_MSG("failed to create the direct3d device!");
 		return false;
 	}
 
 	ID3D11Texture2D* backBufferTexture;
 	// param1,2D贴图视图；param2,渲染目标描述；param3,渲染目标视图对象的地址
-	result = swapChain_->GetBuffer(0, __uuidof(ID3D11Texture2D),(LPVOID*)&backBufferTexture);
+	result = swapChain_->GetBuffer(0, __uuidof(ID3D11Texture2D), (LPVOID*)&backBufferTexture);
 
 	if (FAILED(result))
 	{
@@ -161,4 +162,45 @@ bool Dx11DemoBase::LoadContent()
 void Dx11DemoBase::UnloadContent()
 {
 	// Override with demo specifics, if any...
+}
+
+bool Dx11DemoBase::CompileD3DShader(char* filePath, char* entry, char* shaderModel, ID3DBlob** buffer)
+{
+
+	DWORD shaderFlags = D3DCOMPILE_ENABLE_STRICTNESS;
+
+#if defined(DEBUG)||defined(_DEBUG)
+	shaderFlags |= D3DCOMPILE_DEBUG;
+#endif
+
+	ID3DBlob* errorBuffer = 0;
+	HRESULT result;
+
+	result = D3DX11CompileFromFile(filePath,
+		nullptr,
+		nullptr,
+		entry,
+		shaderModel,
+		shaderFlags,
+		0,
+		nullptr,
+		buffer,
+		&errorBuffer,
+		nullptr);
+
+	if (FAILED(result))
+	{
+		if (errorBuffer!=nullptr)
+		{
+			OutputDebugStringA((char*)errorBuffer->GetBufferPointer());
+			errorBuffer->Release();
+		}
+		return false;
+	}
+
+	if (errorBuffer!=nullptr)
+	{
+		errorBuffer->Release();
+	}
+	return true;
 }

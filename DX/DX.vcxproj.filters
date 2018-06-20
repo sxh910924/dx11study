@@ -16,12 +16,18 @@
     <ClCompile Include="Dx11DemoBase.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="TriangleDemo.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BlankDemo.h">
       <Filter>源文件</Filter>
     </ClInclude>
     <ClInclude Include="Dx11DemoBase.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="TriangleDemo.h">
       <Filter>源文件</Filter>
     </ClInclude>
   </ItemGroup>

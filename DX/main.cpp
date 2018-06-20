@@ -1,6 +1,6 @@
 #include <Windows.h>
 #include <memory>
-#include "BlankDemo.h"
+#include "TriangleDemo.h"
 
 LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam);
 
@@ -32,7 +32,10 @@ int WINAPI wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, 
 
 	ShowWindow(hwnd, nShow);
 
-	std::auto_ptr<Dx11DemoBase> demo(new BlankDemo());
+	// Demo Initialize
+	//bool result = demo.Initialize(hInstance, hwnd);
+
+	std::auto_ptr<TriangleDemo> demo(new TriangleDemo());
 	//Demo Initialize
 	bool result = demo->Initialize(hInstance, hwnd);
 
