@@ -19,7 +19,7 @@ public:
 	virtual void Update(float dt) = 0;
 	virtual void Render() = 0;
 
-	bool CompileD3DShader(char* filePath, char* entry, char* shaderModel, ID3DBlob** buffer);
+	bool CompileD3DShader(const char* filePath,const char* entry,const char* shaderModel, ID3DBlob** buffer);
 
 protected:
 	HINSTANCE hInstance_;

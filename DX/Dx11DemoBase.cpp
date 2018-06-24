@@ -164,7 +164,7 @@ void Dx11DemoBase::UnloadContent()
 	// Override with demo specifics, if any...
 }
 
-bool Dx11DemoBase::CompileD3DShader(char* filePath, char* entry, char* shaderModel, ID3DBlob** buffer)
+bool Dx11DemoBase::CompileD3DShader(const char* filePath, const char* entry, const char* shaderModel, ID3DBlob** buffer)
 {
 
 	DWORD shaderFlags = D3DCOMPILE_ENABLE_STRICTNESS;

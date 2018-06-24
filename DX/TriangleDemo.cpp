@@ -26,14 +26,8 @@ TriangleDemo::~TriangleDemo()
 bool TriangleDemo::LoadContent()
 {
 	ID3DBlob* vsBuffer = nullptr;
-	char* fxName = new char[19];
-	strcpy_s(fxName, 19, "SolidGreenColor.fx");
-	char* entry = new char[8];
-	strcpy_s(entry, 8, "VS_Main");
-	char* shaderModel = new char[7];
-	strcpy_s(shaderModel, 7, "vs_4_0");
 
-	bool compileResult = CompileD3DShader(fxName, entry, shaderModel, &vsBuffer);
+	bool compileResult = CompileD3DShader("SolidGreenColor.fx", "VS_Main", "vs_4_0", &vsBuffer);
 
 	if (compileResult == false)
 	{
@@ -77,9 +71,7 @@ bool TriangleDemo::LoadContent()
 
 	ID3DBlob* psBuffer = nullptr;
 
-	strcpy_s(entry, 8, "PS_Main");
-	strcpy_s(shaderModel, 7, "ps_4_0");
-	compileResult = CompileD3DShader(fxName, entry, shaderModel, &psBuffer);
+	compileResult = CompileD3DShader("SolidGreenColor.fx", "PS_Main", "ps_4_0", &psBuffer);
 	if (compileResult==false)
 	{
 		MessageBox(0,"Error loading pixel shader!","Compile Error",MB_OK);
@@ -94,13 +86,6 @@ bool TriangleDemo::LoadContent()
 	{
 		return false;
 	}
-
-	delete[] fxName;
-	fxName = nullptr;
-	delete[] entry;
-	entry = nullptr;
-	delete[] shaderModel;
-	shaderModel = nullptr;
 
 	//part 2
 	VertexPos vertices[]=
