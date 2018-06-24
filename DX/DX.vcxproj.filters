@@ -22,6 +22,12 @@
     <ClCompile Include="TextureDemo.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="GameSprite.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="GameSpriteDemo.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BlankDemo.h">
@@ -34,6 +40,12 @@
       <Filter>源文件</Filter>
     </ClInclude>
     <ClInclude Include="TextureDemo.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSprite.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSpriteDemo.h">
       <Filter>源文件</Filter>
     </ClInclude>
   </ItemGroup>

@@ -136,6 +136,8 @@
   <ItemGroup>
     <ClCompile Include="BlankDemo.cpp" />
     <ClCompile Include="Dx11DemoBase.cpp" />
+    <ClCompile Include="GameSprite.cpp" />
+    <ClCompile Include="GameSpriteDemo.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="TextureDemo.cpp" />
     <ClCompile Include="TriangleDemo.cpp" />
@@ -143,6 +145,8 @@
   <ItemGroup>
     <ClInclude Include="BlankDemo.h" />
     <ClInclude Include="Dx11DemoBase.h" />
+    <ClInclude Include="GameSprite.h" />
+    <ClInclude Include="GameSpriteDemo.h" />
     <ClInclude Include="TextureDemo.h" />
     <ClInclude Include="TriangleDemo.h" />
   </ItemGroup>
